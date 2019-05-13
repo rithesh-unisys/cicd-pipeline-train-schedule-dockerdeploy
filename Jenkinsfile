@@ -16,7 +16,7 @@ pipeline {
                 script {
                     app = docker.build("willbla/train-sch")
                     app.inside {
-                        sh 'echo $(curl localhost:8080)'
+                        sh 'echo $(curl http://ustr-erl-4319.na.uis.unisys.com:8080)'
                     }
                 }
             }
