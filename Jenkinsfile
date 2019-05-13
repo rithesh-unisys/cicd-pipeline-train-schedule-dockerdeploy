@@ -8,32 +8,5 @@ pipeline {
                 archiveArtifacts artifacts: 'dist/trainSchedule.zip'
             }
         }
-        
-        stage('Build docker image') {
-            when {
-                branch 'master'
-            }
-            steps {
-                script {
-                    app = docker.build("alokgg/train-sch")
-                    app.inside {
-                        sh 'echo $(curl localhost:8080)'
-                    }
-                }
-            }
-        }
-        stage ('Push Docker Image') {
-            when {
-                branch 'master'
-            }
-            steps {
-                script {
-                    docker.withRegistery ('https://registery.hub.docker.com', 'docker_hub_login') {
-                        app.push("${env.BUILD_NUMBER}")
-                        app.push("lastest")
-                    }
-                }
-            }
-        }
     }
 }
