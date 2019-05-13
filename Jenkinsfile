@@ -14,7 +14,7 @@ pipeline {
             }
             steps {
                 script {
-                    app = docker.build("maheshrg/train-test")
+                    app = docker.build("library/train-test")
                     app.inside {
                         sh 'echo $(curl http://ustr-erl-4319.na.uis.unisys.com:8080)'
                     }
