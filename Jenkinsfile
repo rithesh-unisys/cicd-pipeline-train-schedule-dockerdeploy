@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         //be sure to replace "willbla" with your own Docker Hub username
-        DOCKER_IMAGE_NAME = "library/train-test"
+        DOCKER_IMAGE_NAME = "ustr-harbor-1.na.uis.unisys.com/library/train-test"
     }
     stages {
         stage('Build') {
